@@ -1,7 +1,7 @@
 {
    "name": "quizus",
    "private": true,
-   "version": "1.0.0",
+   "version": "0.2.0",
    "main": "server.js",
    "description": "Quizus application",
    "scripts": {
