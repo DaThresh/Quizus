@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizus</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/bulma-steps.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/public/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/public/icon/favicon-16x16.png">
+    <link rel="manifest" href="/public/manifest.json">
+    <script data-ad-client="ca-pub-1993710427778037" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body>
+
+    <section class="hero is-fullheight is-primary is-bold">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <img src="/public/svg/logo.svg" alt="Quizus" height="100" width="250" data-tilt data-tilt-scale="1.1">
+                <h2 class="subtitle">Pass Exams Together</h2>
+                <button class="button is-primary is-inverted create-exam has-text-weight-semibold">
+                    Create Exam
+                </button>
+            </div>
+        </div>
+        <div class="hero-foot">
+            <div class="container" id="hero-footer-container">
+                <div class="box" id="hero-footer-box">
+                    <div class="level">
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Exams</p>
+                                <p class="title has-text-grey" id="stat-exams" amount="<%= exams %>">0</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Questions</p>
+                                <p class="title has-text-grey" id="stat-questions" amount="<%= questions %>">0</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Messages</p>
+                                <p class="title has-text-grey" id="stat-messages" amount="<%= messages %>">0</p>
+                            </div>
+                        </div>
+                        <div class="level-item has-text-centered">
+                            <div>
+                                <p class="heading">Hours</p>
+                                <p class="title has-text-grey" id="stat-hours" amount="<%= hours %>">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container has-text-centered">
+            <div class="columns is-vcentered">
+                <div class="column">
+                    <img src="/public/svg/cap.svg" alt="Graduation cap" height="300" width="300" data-tilt data-tilt-scale="1.1">
+                    <h2 class="title">Collaborative Exams</h2>
+                </div>
+                <div class="column">
+                    <div class="content image-holder">
+                        <img src="/public/img/questions.png" alt="Questions example" class="image image-front">
+                        <img src="/public/img/chat.png" alt="Chat example" class="image image-back">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <seciton class="section">
+        <div class="container">
+            <div class="content has-text-centered">
+                <h2 class="title">How does it work?</h2>
+            </div>
+        </div>
+    </seciton>
+
+    <section class="section">
+        <div class="container">
+            <ul class="steps has-content-centered is-hollow has-gaps">
+                <li class="steps-segment">
+                    <span class="steps-marker is-info">
+                        <span class="icon">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </span>
+                    <div class="steps-content">
+                        <p class="is-size-5">Create Exam</p>
+                        <p>enter exam name and time</p>
+                    </div>
+                </li>
+                <li class="steps-segment">
+                    <span class="steps-marker is-info">
+                        <span class="icon">
+                            <i class="fas fa-users"></i>
+                        </span>
+                    </span>
+                    <div class="steps-content">
+                        <p class="is-size-5">Invite Peers</p>
+                        <p>with your unique link</p>
+                    </div>
+                </li>
+                <li class="steps-segment">
+                    <span class="steps-marker is-info">
+                        <span class="icon">
+                            <i class="fas fa-award"></i>
+                        </span>
+                    </span>
+                    <div class="steps-content">
+                        <p class="is-size-5">Ace Exams</p>
+                        <p>collaboratively</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="content has-text-centered">
+                <h3 class="subtitle has-text-weight-medium">Once time's up, the <strong>anonymous</strong> entries are gone forever.</h3>
+                <h4 class="subtitle has-text-weight-medium">Simple as can be.</h4>
+                <button class="button is-primary create-exam has-text-weight-semibold">Create Exam</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>Created by the Quizus Team.</p>
+            <p>Special thanks to the technologies that we're built with.</p>
+            <p class="has-text-centered">
+                <a href="https://socket.io" alt="SocketIO Website">SocketIO</a> | <a href="https://bulma.io" alt="Bulma Website">Bulma</a>
+            </p>
+        </div>
+    </footer>
+
+    <div class="modal" id="create-modal">
+        <div class="modal-background close-exam"></div>
+        <div class="modal-content">
+            <div class="box">
+                <form method="POST" action="/create" autocomplete="off">
+                    <div class="field">
+                        <label class="label">Exam name</label>
+                        <div class="control">
+                            <input class="input" name="examName" id="examName">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-medium">
+                                <select name="duration">
+                                    <option selected value="1">1 Hour</option>
+                                    <option value="2">2 Hours</option>
+                                    <option value="3">3 Hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="button is-primary">Start!</button>
+                </form>
+            </div>
+        </div>
+        <button class="modal-close is-large close-exam" aria-label="close"></button>
+    </div>
+
+    <script src="/public/js/js.js" type="module"></script>
+    <script src="/public/js/tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    
+</body>
+</html>

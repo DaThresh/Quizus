@@ -1,14 +1,22 @@
 {
-   "name": "customboiler",
+   "name": "quizus",
+   "private": true,
    "version": "1.0.0",
-   "description": "A Custom Boilerplate. Featuring HMR, React, Redux, Express",
+   "main": "server.js",
+   "description": "Quizus application",
    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
       "build": "webpack",
-      "start": "node ./server/expressServer.js"
+      "start": "node ./server/server.js"
    },
-   "keywords": [],
-   "author": "Matt DeLong",
+   "bugs": "https://github.com/DaThresh/Quizus/issues",
+   "homepage": "https://github.com/DaThresh/Quizus",
+   "keywords": [
+      "quiz",
+      "us",
+      "college",
+      "students"
+   ],
+   "author": "Quizus",
    "license": "ISC",
    "devDependencies": {
       "@babel/core": "^7.10.5",
@@ -23,7 +31,6 @@
       "express": "^4.17.1",
       "file-loader": "^6.0.0",
       "image-webpack-loader": "^6.0.0",
-      "open": "^7.0.4",
       "prettier": "2.0.5",
       "style-loader": "^1.2.1",
       "webpack": "^4.43.0",
@@ -33,12 +40,16 @@
    },
    "dependencies": {
       "@hot-loader/react-dom": "^16.13.0",
+      "chalk": "^4.1.0",
       "core-js": "^3.6.5",
-      "normalize.css": "^8.0.1",
+      "ejs": "^3.1.5",
+      "express-session": "^1.17.1",
+      "express-socket.io-session": "^1.3.5",
+      "js-yaml": "^3.14.0",
+      "mongoose": "^5.10.0",
       "react": "^16.13.1",
       "react-dom": "^16.13.1",
       "react-hot-loader": "^4.12.21",
-      "react-redux": "^7.2.0",
-      "redux": "^4.0.5"
+      "socket.io": "^2.3.0"
    }
 }

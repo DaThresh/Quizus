@@ -1,0 +1,23 @@
+port: 8000
+env: 'dev'
+
+database:
+  name: 'quizus'
+  host: 'localhost'
+  port: 27017
+  username: ''
+  password: ''
+  srv: false
+  options:
+
+logging:
+  skip:
+    - '.ico'
+    - '.png'
+    - '.jpg'
+    - '.js'
+    - '.css'
+    - '.map'
+    - '.json'
+    - '.svg'
+    - '.ttf'
