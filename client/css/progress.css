@@ -1,0 +1,72 @@
+#room-info{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    max-height: 30px;
+    overflow: visible;
+    line-height: 0.5;
+}
+
+.up-right{
+    text-align: right;
+    display: block;
+    font-size: 12px;
+}
+
+.has-tooltip{
+    position: relative;
+    display: inline-block;
+}
+
+.has-tooltip+.tooltip-text{
+    display: block;
+    visibility: hidden;
+    max-width: 500px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1;
+  
+    /* Position the tooltip text */
+    position: relative;
+    right: 0;
+    z-index: 5;
+    bottom: -5px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#room-info:hover .tooltip-text, .tooltip-text:hover {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+.blink-me {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.tabs, .tab-list{
+    overflow: visible;
+}
+
+@media only screen and (max-width: 768px){
+    #room-info{
+        display: none;
+    }
+}
+
+.progress-full-width{
+    width: 100%;
+}

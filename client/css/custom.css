@@ -1,0 +1,113 @@
+.is-pointable{
+    pointer-events: initial !important;
+}
+
+.is-scrolling{
+    /* overflow: scroll; */
+    max-height: 100%;
+    padding-bottom: 15px;
+}
+
+#wrapper{
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.vote-icon{
+    font-size: 20px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.question-card-content{
+    padding-bottom: 10px;
+}
+
+.copy-link{
+    text-decoration: underline;
+    text-decoration-color: hsl(204, 86%, 53%);
+    text-decoration-style: dashed;
+    text-decoration-thickness: 1px;
+    cursor: pointer;
+}
+
+.copy-link:hover{
+    text-decoration-color: hsl(217, 71%, 53%);
+}
+
+.copy-link-icon{
+    color: hsl(204, 86%, 53%);
+}
+
+.copy-link:hover .copy-link-icon{
+    color: hsl(217, 71%, 53%);
+}
+
+.copy-link:active{
+    color: blue;
+}
+
+.copy-link:active .copy-link-icon{
+    color: blue;
+}
+
+.progress-holder-mobile{
+    position: relative;
+}
+
+.progress-text-mobile{
+    position: absolute;
+}
+
+#messages-form{
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    padding-bottom: 0px;
+}
+
+#mobile-menu{
+    display: none;
+}
+
+#mobile-menu.is-active{
+    display: inline-block;
+    position: fixed;
+    width: 100%;
+    padding: 15px;
+    top: 50px;
+    left: 0;
+    z-index: 10;
+}
+
+#topbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#wrapper{
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+}
+
+#content-section{
+    margin-top: 130px;
+}
+
+#room-progress-mobile{
+    position: relative;
+    top: 16px;
+    left: 2px;
+}
+
+#room-progress-desktop{
+    position: relative;
+}

@@ -1,0 +1,251 @@
+.question-progress-0::-webkit-progress-value{
+    background-color: hsl(348, 100%, 61%);
+}
+
+.question-progress-0::-moz-progress-bar{
+    background-color: hsl(348, 100%, 61%);
+}
+
+.question-progress-0::-ms-fill{
+    background-color: hsl(348, 100%, 61%);
+}
+
+.question-progress-5::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 5%, 5%, hsl(348, 100%, 61%) 95%);
+}
+
+.question-progress-5::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 5%, 5%, hsl(348, 100%, 61%) 95%);
+}
+
+.question-progress-5::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 5%, 5%, hsl(348, 100%, 61%) 95%);
+}
+
+.question-progress-10::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 10%, 10%, hsl(348, 100%, 61%) 90%);
+}
+
+.question-progress-10::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 10%, 10%, hsl(348, 100%, 61%) 90%);
+}
+
+.question-progress-10::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 10%, 10%, hsl(348, 100%, 61%) 90%);
+}
+
+.question-progress-15::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 15%, 15%, hsl(348, 100%, 61%) 85%);
+}
+
+.question-progress-15::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 15%, 15%, hsl(348, 100%, 61%) 85%);
+}
+
+.question-progress-15::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 15%, 15%, hsl(348, 100%, 61%) 85%);
+}
+
+.question-progress-20::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 20%, 20%, hsl(348, 100%, 61%) 80%);
+}
+
+.question-progress-20::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 20%, 20%, hsl(348, 100%, 61%) 80%);
+}
+
+.question-progress-20::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 20%, 20%, hsl(348, 100%, 61%) 80%);
+}
+
+.question-progress-25::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 25%, 25%, hsl(348, 100%, 61%) 75%);
+}
+
+.question-progress-25::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 25%, 25%, hsl(348, 100%, 61%) 75%);
+}
+
+.question-progress-25::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 25%, 25%, hsl(348, 100%, 61%) 75%);
+}
+
+.question-progress-30::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 30%, 30%, hsl(348, 100%, 61%) 70%);
+}
+
+.question-progress-30::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 30%, 30%, hsl(348, 100%, 61%) 70%);
+}
+
+.question-progress-30::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 30%, 30%, hsl(348, 100%, 61%) 70%);
+}
+
+.question-progress-35::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 35%, 35%, hsl(348, 100%, 61%) 65%);
+}
+
+.question-progress-35::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 35%, 35%, hsl(348, 100%, 61%) 65%);
+}
+
+.question-progress-35::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 35%, 35%, hsl(348, 100%, 61%) 65%);
+}
+
+.question-progress-40::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 40%, 40%, hsl(348, 100%, 61%) 60%);
+}
+
+.question-progress-40::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 40%, 40%, hsl(348, 100%, 61%) 60%);
+}
+
+.question-progress-40::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 40%, 40%, hsl(348, 100%, 61%) 60%);
+}
+
+.question-progress-45::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 45%, 45%, hsl(348, 100%, 61%) 55%);
+}
+
+.question-progress-45::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 45%, 45%, hsl(348, 100%, 61%) 55%);
+}
+
+.question-progress-45::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 45%, 45%, hsl(348, 100%, 61%) 55%);
+}
+
+.question-progress-50::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 50%, 50%, hsl(348, 100%, 61%) 50%);
+}
+
+.question-progress-50::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 50%, 50%, hsl(348, 100%, 61%) 50%);
+}
+
+.question-progress-50::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 50%, 50%, hsl(348, 100%, 61%) 50%);
+}
+
+.question-progress-55::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 55%, 55%, hsl(348, 100%, 61%) 45%);
+}
+
+.question-progress-55::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 55%, 55%, hsl(348, 100%, 61%) 45%);
+}
+
+.question-progress-55::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 55%, 55%, hsl(348, 100%, 61%) 45%);
+}
+
+.question-progress-60::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 60%, 60%, hsl(348, 100%, 61%) 40%);
+}
+
+.question-progress-60::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 60%, 60%, hsl(348, 100%, 61%) 40%);
+}
+
+.question-progress-60::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 60%, 60%, hsl(348, 100%, 61%) 40%);
+}
+
+.question-progress-65::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 65%, 65%, hsl(348, 100%, 61%) 35%);
+}
+
+.question-progress-65::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 65%, 65%, hsl(348, 100%, 61%) 35%);
+}
+
+.question-progress-65::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 65%, 65%, hsl(348, 100%, 61%) 35%);
+}
+
+.question-progress-70::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 70%, 70%, hsl(348, 100%, 61%) 30%);
+}
+
+.question-progress-70::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 70%, 70%, hsl(348, 100%, 61%) 30%);
+}
+
+.question-progress-70::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 70%, 70%, hsl(348, 100%, 61%) 30%);
+}
+
+.question-progress-75::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 75%, 75%, hsl(348, 100%, 61%) 25%);
+}
+
+.question-progress-75::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 75%, 75%, hsl(348, 100%, 61%) 25%);
+}
+
+.question-progress-75::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 75%, 75%, hsl(348, 100%, 61%) 25%);
+}
+
+.question-progress-80::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 80%, 80%, hsl(348, 100%, 61%) 20%);
+}
+
+.question-progress-80::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 80%, 80%, hsl(348, 100%, 61%) 20%);
+}
+
+.question-progress-80::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 80%, 80%, hsl(348, 100%, 61%) 20%);
+}
+
+.question-progress-85::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 85%, 85%, hsl(348, 100%, 61%) 15%);
+}
+
+.question-progress-85::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 85%, 85%, hsl(348, 100%, 61%) 15%);
+}
+
+.question-progress-85::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 85%, 85%, hsl(348, 100%, 61%) 15%);
+}
+
+.question-progress-90::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 90%, 90%, hsl(348, 100%, 61%) 10%);
+}
+
+.question-progress-90::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 90%, 90%, hsl(348, 100%, 61%) 10%);
+}
+
+.question-progress-90::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 90%, 90%, hsl(348, 100%, 61%) 10%);
+}
+
+.question-progress-95::-webkit-progress-value{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 95%, 95%, hsl(348, 100%, 61%) 5%);
+}
+
+.question-progress-95::-moz-progress-bar{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 95%, 95%, hsl(348, 100%, 61%) 5%);
+}
+
+.question-progress-95::-ms-fill{
+    background-image: linear-gradient(to right, hsl(141, 53%, 53%) 95%, 95%, hsl(348, 100%, 61%) 5%);
+}
+
+.question-progress-100::-webkit-progress-value{
+    background-color: hsl(141, 53%, 53%);
+}
+
+.question-progress-100::-moz-progress-bar{
+    background-color: hsl(141, 53%, 53%);
+}
+
+.question-progress-100::-ms-fill{
+    background-color: hsl(141, 53%, 53%);
+}

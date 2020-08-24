@@ -11,6 +11,7 @@ Follow these steps to get the project up and running on your machine:
 
 1. [MongoDB Instance](https://nodejs.org/en/)
 2. [NPM/NodeJS](https://nodejs.org/en/)
+3. [Git](https://git-scm.com/downloads)
 
 ## Requests/Events
 
