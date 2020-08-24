@@ -1,49 +1,39 @@
 // React
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 
-class Message extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = props.message;
-        this.state.date = new Date(props.message.date);
-        this.state.elapsedTime = elapsedTime(this.state.date, new Date());
-        this.last = props.last;
-    }
+function Message(props){
+    const date = new Date(props.message.date);
+    const [elapsedTime, setElapsedTime] = useState(calculateElapsedTime(date, new Date()));
 
-    componentDidMount(){
-        this.interval = setInterval(this.intervalLogic, 60000);
-        if(this.last) document.getElementById(this.props.id).scrollIntoView();
-    }
+    useEffect(() => {
+        let interval = setInterval(intervalLogic, 60000);
+        if(props.last) document.getElementById(props.id).scrollIntoView();
+        return () => clearInterval(interval);
+    }, []);
 
-    componentWillUnmount(){
-        clearInterval(this.interval);
-    }
+    var intervalLogic = () => setElapsedTime(calculateElapsedTime(date, new Date()));
 
-    intervalLogic = () => this.setState({ elapsedTime: elapsedTime(this.state.date, new Date()) });
+    let color = {color: getAnimalColor(props.message.animal)};
 
-    render(){
-        let color = {color: getAnimalColor(this.state.animal)};
-
-        return(
-            <div className="box" id={this.props.id}>
-                <article className="media">
-                    <div className="media-content">
-                        <div className="content">
-                            <p>
-                                <strong style={color}>Anon {this.state.animal}</strong>  <small>{this.state.elapsedTime}</small>
-                                <br />
-                                {this.state.message}
-                            </p>
-                        </div>
+    return (
+        <div className="box" id={props.id}>
+            <article className="media">
+                <div className="media-content">
+                    <div className="content">
+                        <p>
+                            <strong style={color}>Anon {props.message.animal}</strong>  <small>{elapsedTime}</small>
+                            <br />
+                            {props.message.message}
+                        </p>
                     </div>
-                </article>
-            </div>
-        )
-    }
+                </div>
+            </article>
+        </div>
+    )
 }
 
-function elapsedTime(start, end){
+function calculateElapsedTime(start, end){
     let timeDiff = end - start;
     timeDiff = Math.round(timeDiff / 1000);
     if(timeDiff < 60) return 'less than a minute ago';

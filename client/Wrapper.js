@@ -1,5 +1,5 @@
 // React
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 // Components
@@ -21,100 +21,92 @@ var componentMapper = {
 
 global.tab = 'chat';
 
-class Wrapper extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            tab: global.tab,
-            unRead: global.unRead,
-            progress: -1,
-        }
-    }
+function Wrapper(props){
+    const [tab, setTab] = useState(global.tab);
+    const [unRead, setUnRead] = useState(global.unRead);
+    const [progress, setProgress] = useState(-1);
+    const [timeout, updateTimeout] = useState(0);
 
-    componentDidMount(){
-        this.timeout = setTimeout(this.updateProgress, 100);
-    }
+    useEffect(() => {
+        updateTimeout(setTimeout(updateProgress, 100));
+        return () => clearTimeout(timeout);
+    }, []);
 
-    componentWillUnmount(){
-        clearTimeout(this.timeout);
-    }
-
-    changeTab = (event) => {
+    var changeTab = (event) => {
         let tabName = event.currentTarget.id;
         global.tab = tabName;
-        let update = { tab: tabName };
-        if(tabName === 'chat') Object.assign(update, { unRead: 0 });
-        this.setState(update);
+        setTab(tabName);
+        if(tabName === 'chat') setUnRead(0);
         document.getElementById('tab-list').childNodes.forEach(node => {
             node.classList.remove('is-active');
         })
         document.getElementById(tabName).classList.add('is-active');
     }
+    
+    var copyLink = () => navigator.clipboard.writeText(window.location.href);
 
-    copyLink = () => navigator.clipboard.writeText(window.location.href);
-
-    updateProgress = () => {
+    var updateProgress = () => {
+        let time;
         let progress = fetchProgress();
-        this.setState({ progress: progress });
-        if(progress !== -1) this.timeout = setTimeout(this.updateProgress, 1000 * 60);
-        else this.timeout = setTimeout(this.updateProgress, 300);
+        setProgress(progress);
+        if(progres !== -1) time = 1000 * 60;
+        else time = 300;
+        updateTimeout(updateProgress, time);
     }
 
-    render(){
-        let CurrentTab = componentMapper[this.state.tab];
-        let progressClass = 'progress is-small has-tooltip';
-        if(this.state.progress > 66) progressClass += ' is-success';
-        else if(this.state.progress > 25) progressClass += ' is-warning';
-        else progressClass += ' is-danger';
-        if(this.state.progress < 10) progressClass += ' blink-me';
+    let CurrentTab = componentMapper[tab];
+    let progressClass = 'progress is-small has-tooltip';
+    if(progress > 66) progressClass += ' is-success';
+    else if(progress > 25) progressClass += ' is-warning';
+    else progressClass += ' is-danger';
+    if(progress < 10) progressClass += ' blink-me';
 
-        return (
-            <div>
-                <section className="section" id="wrapper">
-                    <div className="container">
-                        <div className="tabs is-centered is-boxed is-medium">
-                            <ul id="tab-list" className="is-relative">
-                                <li className="is-active" onClick={this.changeTab} id="chat">
-                                    <a>
-                                        <span className="icon is-small">
-                                            <FontAwesomeIcon icon={faComments} />
-                                        </span>
-                                        <span>Chat</span>
-                                    </a>
-                                </li>
-                                <li onClick={this.changeTab} id="questions">
-                                    <a>
-                                        <span className="icon is-small">
-                                            <FontAwesomeIcon icon={faQuestion} />
-                                        </span>
-                                        <span>Questions</span>
-                                    </a>
-                                </li>
-                                <div id="room-info">
-                                    <span className="up-right">Time left</span>
-                                    <progress id="room-progress-desktop"
-                                            className={progressClass}
-                                            style={{marginBottom: '0'}}
-                                            value={this.state.progress}
-                                            max="100">
-                                    </progress>
-                                    <span className="tooltip-text">
-                                        <span onClick={this.copyLink} className="copy-link">Copy the link <FontAwesomeIcon icon={faLink} className="copy-link-icon" /></span>
-                                        <br />
-                                        Invite your peers
+    return (
+        <div>
+            <section className="section" id="wrapper">
+                <div className="container">
+                    <div className="tabs is-centered is-boxed is-medium">
+                        <ul id="tab-list" className="is-relative">
+                            <li className="is-active" onClick={changeTab} id="chat">
+                                <a>
+                                    <span className="icon is-small">
+                                        <FontAwesomeIcon icon={faComments} />
                                     </span>
-                                </div>
-                            </ul>
-                        </div>
+                                    <span>Chat</span>
+                                </a>
+                            </li>
+                            <li onClick={changeTab} id="questions">
+                                <a>
+                                    <span className="icon is-small">
+                                        <FontAwesomeIcon icon={faQuestion} />
+                                    </span>
+                                    <span>Questions</span>
+                                </a>
+                            </li>
+                            <div id="room-info">
+                                <span className="up-right">Time left</span>
+                                <progress id="room-progress-desktop"
+                                        className={progressClass}
+                                        style={{marginBottom: '0'}}
+                                        value={progress}
+                                        max="100">
+                                </progress>
+                                <span className="tooltip-text">
+                                    <span onClick={copyLink} className="copy-link">Copy the link <FontAwesomeIcon icon={faLink} className="copy-link-icon" /></span>
+                                    <br />
+                                    Invite your peers
+                                </span>
+                            </div>
+                        </ul>
                     </div>
-                </section>
-                <section className="section" id="content-section" style={{paddingTop: 0}}>
-                    <CurrentTab />
-                </section>
-                <Input />
-            </div>
-        )
-    }
+                </div>
+            </section>
+            <section className="section" id="content-section" style={{paddingTop: 0}}>
+                <CurrentTab />
+            </section>
+            <Input />
+        </div>
+    )
 }
 
 function fetchProgress(){
