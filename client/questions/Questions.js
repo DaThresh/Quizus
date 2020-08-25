@@ -9,8 +9,8 @@ import { Search } from 'js-search';
 import Modal from './Modal';
 import Question from './Question';
 
-// CSS
-import '../css/questions.css';
+// Styles
+import '../sass/questions.scss';
 
 // API
 import { subscribeQuestions, unsubscribeQuestions, castVote } from '../socket/api';

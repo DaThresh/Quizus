@@ -18,9 +18,9 @@ function Input(props){
         input = document.getElementById('chat-input');
     }, []);
 
-    handleChange = (event) => setMessage(event.currentTarget.value);
+    var handleChange = (event) => setMessage(event.currentTarget.value);
 
-    submitMessage = (event) => {
+    var submitMessage = (event) => {
         if(message !== ''){
             createMessage({message, animal: global.animal, date: new Date()});
             setMessage('');

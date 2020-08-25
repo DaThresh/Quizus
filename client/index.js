@@ -4,8 +4,8 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Styles
-import './css/bulma.css';
-import './css/custom.css';
+import './sass/imports.sass';
+import './sass/App.scss';
 
 // Components
 import Wrapper from './Wrapper';

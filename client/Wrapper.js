@@ -7,8 +7,8 @@ import Chat from './messages/Messages';
 import Questions from './questions/Questions';
 import Input from './messages/Input';
 
-// CSS
-import './css/progress.css';
+// Styles
+import './sass/progress.scss';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +18,7 @@ var componentMapper = {
     'chat': Chat,
     'questions': Questions
 }
+var timeout = 0;
 
 global.tab = 'chat';
 
@@ -25,10 +26,9 @@ function Wrapper(props){
     const [tab, setTab] = useState(global.tab);
     const [unRead, setUnRead] = useState(global.unRead);
     const [progress, setProgress] = useState(-1);
-    const [timeout, updateTimeout] = useState(0);
 
     useEffect(() => {
-        updateTimeout(setTimeout(updateProgress, 100));
+        timeout = setTimeout(updateProgress, 100);
         return () => clearTimeout(timeout);
     }, []);
 
@@ -36,7 +36,10 @@ function Wrapper(props){
         let tabName = event.currentTarget.id;
         global.tab = tabName;
         setTab(tabName);
-        if(tabName === 'chat') setUnRead(0);
+        if(tabName === 'chat'){
+            setUnRead(0);
+            document.title = 'Quizus';
+        }
         document.getElementById('tab-list').childNodes.forEach(node => {
             node.classList.remove('is-active');
         })
@@ -49,9 +52,9 @@ function Wrapper(props){
         let time;
         let progress = fetchProgress();
         setProgress(progress);
-        if(progres !== -1) time = 1000 * 60;
+        if(progress !== -1) time = 1000 * 60;
         else time = 300;
-        updateTimeout(updateProgress, time);
+        timeout = updateProgress, time;
     }
 
     let CurrentTab = componentMapper[tab];

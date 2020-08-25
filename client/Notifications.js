@@ -2,8 +2,8 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 
-// CSS
-import './css/notifications.css';
+// Styles
+import './sass/Notifications.scss';
 
 function Notifications(props){
     return (

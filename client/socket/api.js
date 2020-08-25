@@ -29,6 +29,7 @@ function setup(){
     
     socket.on('messages.create', (message) => {
         if(global.tab !== 'chat') global.unRead += 1;
+        if(global.unRead > 0) document.title = 'Quizus (' + global.unRead + ')';
         global.messages.push(message);
         subscriptions.messages.forEach(subscription => subscription('create'))
     })
