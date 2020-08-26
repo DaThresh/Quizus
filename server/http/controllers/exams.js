@@ -1,4 +1,5 @@
 const fields = require(DIR + '/validation/fields');
+const path = require('path');
 
 const destructExam = require(DIR + '/jobs/exams/destruct');
 
@@ -38,9 +39,9 @@ module.exports = {
         })
     },
     serve: function(req, res, next){
-        let path = DIR + '/build/index.html';
+        let resolvedPath = path.resolve(DIR + '../public/index.html');
         Exam.countDocuments({ code: req.params.exam })
-        .then(count => count > 0 ? res.status(200).sendFile(path) : next())
+        .then(count => count > 0 ? res.status(200).sendFile(resolvedPath) : next())
         .catch(error => Errors.error(error, 'Failed to fetch count on exam'))
     }
 }

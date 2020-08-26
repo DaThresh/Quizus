@@ -1,9 +1,16 @@
 // React
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+
+// Socket
+import setupSocket from './socket/api';
 
 function Topbar(props){
     const [examName, setExamName] = useState('');
+
+    useEffect(() => {
+      setupSocket();
+    }, []);
 
     var nameInterval = setInterval(() => {
         let name = global.exam.name;

@@ -5,12 +5,12 @@ const app = require('express')();
 const http = require('http').createServer(app);
 const expressSession = require('express-session');
 
-global.Logger = require('./utilities/logger');
+global.Logger = require('./utilities/Logger');
 Logger.log('Loaded express, http, and socketio');
 
-global.Errors = require('./utilities/error');
-
-const String = require('./utilities/string');
+global.Errors = require('./utilities/Errors');
+const String = require('./utilities/String');
+Logger.log('Loaded utilities');
 
 global.DIR = __dirname;
 require('./load/config');
@@ -34,8 +34,8 @@ if(ENV === 'dev'){
       path: '/__webpack_hmr'
     }));
 }
+app.use(require(DIR + '/http/middleware/logRequest'));
 app.use(express.static(DIR + '/../public/'));
-app.use(require('./http/middleware/logRequest'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 var session = expressSession({
@@ -46,8 +46,6 @@ var session = expressSession({
 })
 app.use(session);
 app.set('trust proxy', 1);
-app.set('view engine', 'ejs');
-app.set('views', DIR + '/public');
 if(ENV === 'production') app.set('env', ENV);
 Logger.log('Loaded app middleware');
 
@@ -55,4 +53,4 @@ require('./http/routes')(app);
 
 require('./socket/io')(http, session);
 
-http.listen(PORT, () => Logger.log('Listening on *:' + PORT));
+http.listen(PORT, () => Logger.log('Listening on port ' + PORT));

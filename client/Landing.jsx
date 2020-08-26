@@ -1,5 +1,5 @@
 // React
-import React from 'react';
+import React, { useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 // Styles
@@ -11,7 +11,21 @@ import CreateRoom from './modals/CreateRoom';
 // Services
 import { openModal } from './services/modal';
 
+// Modules
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faUsers, faAward } from '@fortawesome/free-solid-svg-icons';
+import { CountUp } from 'countup.js';
+
 function Landing(props){
+    useEffect(() => {
+        let statElements = document.querySelectorAll('[is-stat]');
+        statElements.forEach(element => {
+            let c = new CountUp(element.id, 100);
+            c.start();
+        });
+        // Get the server stats for countup here
+    }, []);
+
     var modal = () => openModal(<CreateRoom />);
 
     return (
@@ -19,7 +33,7 @@ function Landing(props){
             <section className="hero is-fullheight is-primary is-bold">
                 <div className="hero-body">
                     <div className="container has-text-centered">
-                        <img src="/public/svg/logo.svg" alt="Quizus" height="100" width="250" data-tilt data-tilt-scale="1.1" />
+                        <img src="/svg/logo.svg" alt="Quizus" height="100" width="250" />
                         <h2 className="subtitle">Pass Exams Together</h2>
                         <button className="button is-primary is-inverted create-exam has-text-weight-semibold" onClick={modal}>
                             Create Exam
@@ -33,25 +47,25 @@ function Landing(props){
                                 <div className="level-item has-text-centered">
                                     <div>
                                         <p className="heading">Exams</p>
-                                        <p className="title has-text-grey" id="stat-exams" amount="<%= exams %>">0</p>
+                                        <p className="title has-text-grey" id="exams-stat" name="exams" is-stat="true">0</p>
                                     </div>
                                 </div>
                                 <div className="level-item has-text-centered">
                                     <div>
                                         <p className="heading">Questions</p>
-                                        <p className="title has-text-grey" id="stat-questions" amount="<%= questions %>">0</p>
+                                        <p className="title has-text-grey" id="questions-stat" name="questions" is-stat="true">0</p>
                                     </div>
                                 </div>
                                 <div className="level-item has-text-centered">
                                     <div>
                                         <p className="heading">Messages</p>
-                                        <p className="title has-text-grey" id="stat-messages" amount="<%= messages %>">0</p>
+                                        <p className="title has-text-grey" id="messages-stat" name="messages" is-stat="true">0</p>
                                     </div>
                                 </div>
                                 <div className="level-item has-text-centered">
                                     <div>
                                         <p className="heading">Hours</p>
-                                        <p className="title has-text-grey" id="stat-hours" amount="<%= hours %>">0</p>
+                                        <p className="title has-text-grey" id="hours-stat" name="hours" is-stat="true">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -64,13 +78,13 @@ function Landing(props){
                 <div className="container has-text-centered">
                     <div className="columns is-vcentered">
                         <div className="column">
-                            <img src="/public/svg/cap.svg" alt="Graduation cap" height="300" width="300" data-tilt data-tilt-scale="1.1" />
+                            <img src="/svg/cap.svg" alt="Graduation cap" height="300" width="300" />
                             <h2 className="title">Collaborative Exams</h2>
                         </div>
                         <div className="column">
                             <div className="content image-holder">
-                                <img src="/public/img/questions.png" alt="Questions example" className="image image-front" />
-                                <img src="/public/img/chat.png" alt="Chat example" className="image image-back" />
+                                <img src="/img/questions.png" alt="Questions example" className="image image-front" />
+                                <img src="/img/chat.png" alt="Chat example" className="image image-back" />
                             </div>
                         </div>
                     </div>
@@ -88,36 +102,30 @@ function Landing(props){
             <section className="section">
                 <div className="container">
                     <ul className="steps has-content-centered is-hollow has-gaps">
-                        <li className="steps-segment">
-                            <span className="steps-marker is-info">
-                                <span className="icon">
-                                    <i className="fas fa-plus"></i>
-                                </span>
-                            </span>
-                            <div className="steps-content">
-                                <p className="is-size-5">Create Exam</p>
+                        <li className="step-item is-info is-completed">
+                            <div className="step-marker">
+                                <FontAwesomeIcon icon={faPlus} />
+                            </div>
+                            <div className="step-details">
+                                <p className="step-title">Create Exam</p>
                                 <p>enter exam name and time</p>
                             </div>
                         </li>
-                        <li className="steps-segment">
-                            <span className="steps-marker is-info">
-                                <span className="icon">
-                                    <i className="fas fa-users"></i>
-                                </span>
-                            </span>
-                            <div className="steps-content">
-                                <p className="is-size-5">Invite Peers</p>
+                        <li className="step-item is-info is-completed">
+                            <div className="step-marker">
+                                <FontAwesomeIcon icon={faUsers} />
+                            </div>
+                            <div className="step-details">
+                                <p className="step-title">Invite Peers</p>
                                 <p>with your unique link</p>
                             </div>
                         </li>
-                        <li className="steps-segment">
-                            <span className="steps-marker is-info">
-                                <span className="icon">
-                                    <i className="fas fa-award"></i>
-                                </span>
-                            </span>
-                            <div className="steps-content">
-                                <p className="is-size-5">Ace Exams</p>
+                        <li className="step-item is-info is-completed">
+                            <div className="step-marker">
+                                <FontAwesomeIcon icon={faAward} />
+                            </div>
+                            <div className="step-details">
+                                <p className="step-title">Ace Exams</p>
                                 <p>collaboratively</p>
                             </div>
                         </li>

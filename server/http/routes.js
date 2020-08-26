@@ -1,36 +1,25 @@
-const fs = require('fs');
-
-const rooms = require('./controllers/exams');
-
-const Server = require(DIR + '/models/server');
+const path = require('path');
+const Exam = require(DIR + '/models/exam');
+const createExam = require('./services/createExam');
+const getStats = require('./services/getStats');
 
 module.exports = (app) => {
-    app.get('/', renderIndex);
+    // Get
+    app.get('/join/:exam', serveApp);
+    app.get('/stats', getStats);
     
-    // Rooms
-    app.post('/create', rooms.create);
-    app.get('/join/:exam', rooms.serve);
+    // Post
+    app.post('/create', createExam);
 
-    app.get('/public/*', sendStatic);
-    app.get('/build/*', sendStatic);
-    app.get('/favicon.ico', sendIcon);
-
+    // Catch
     app.all('*', code404);
 }
 
-function renderIndex(req, res){
-    Server.findOne({})
-    .then(server => res.status(200).render('index', server))
-    .catch(error => Errors.error(error, 'Failed to load index'));
-}
-
-function sendStatic(req, res, next){
-    if(fs.existsSync(DIR + req.path)) res.sendFile(DIR + req.path);
-    else next();
-}
-
-function sendIcon(req, res){
-    res.sendFile(DIR + '/favicon.ico');
+function serveApp(req, res, next){
+    let resolvedPath = path.resolve(DIR + '/../public/index.html');
+    Exam.countDocuments({ code: req.params.exam })
+    .then(count => count > 0 ? res.status(200).sendFile(resolvedPath) : next())
+    .catch(error => Errors.error(res, error, 500));
 }
 
 function code404(req, res){

@@ -11,6 +11,14 @@ import Topbar from './Topbar';
 import Wrapper from './Wrapper';
 import Notifications from './Notifications';
 
+// Router
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom';
+
 function App(props){
     // Create room service where you fetch to see if you are in the room
     const [inRoom, setInRoom] = useState(false);
@@ -24,7 +32,16 @@ function App(props){
 
     return (
         <span id="app">
-            {inRoom ? room : <Landing />}
+            <Router>
+                <Switch>
+                    <Route path="/join/:examName">
+                        {room}
+                    </Route>
+                    <Route path="/">
+                        <Landing />
+                    </Route>
+                </Switch>
+            </Router>
         </span>
     )
 }
