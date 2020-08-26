@@ -12,11 +12,7 @@ import Wrapper from './Wrapper';
 import Notifications from './Notifications';
 
 // Router
-import {
-    Switch,
-    Route,
-    Link
-} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 function App(props){
     // Create room service where you fetch to see if you are in the room

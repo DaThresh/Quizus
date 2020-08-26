@@ -11,7 +11,7 @@ function Modal(props){
     useEffect(() => {
         subscribe(receiveModalEvent);
         return () => unsubscribe(receiveModalEvent);
-    });
+    }, []);
 
     var receiveModalEvent = (data) => {
         if(data.event === 'open') setModal(data.component);

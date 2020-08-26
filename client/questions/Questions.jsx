@@ -13,38 +13,32 @@ import CreateQuestion from '../modals/CreateQuestion';
 import '../sass/questions.scss';
 
 // Services
-import { subscribeQuestions, unsubscribeQuestions, castVote } from '../socket/api';
+import { subscribe, unsubscribe, getQuestions } from '../services/socket/questions';
+import { castVote } from '../services/socket/api';
 import { openModal } from '../services/modal';
 
 // Ads
 import AdSense from 'react-adsense';
 
-var jsSearch;
-
 function Questions(props){
-    const [questions, setQuestions] = useState(global.questions);
+    const [questions, setQuestions] = useState(getQuestions());
     const [search, setSearch] = useState('');
+    var jsSearch = new Search('_id');
+    jsSearch.addIndex('answer');
+    jsSearch.addIndex('question');
+    jsSearch.addDocuments(questions);
 
     useEffect(() => {
-        subscribeQuestions(receiveQuestion);
-        return () => unsubscribeQuestions(receiveQuestion);
-    });
-
-    var setupSearch = () => {
-        jsSearch = new Search('_id');
-        jsSearch.addIndex('answer');
-        jsSearch.addIndex('question');
-        jsSearch.addDocuments(questions);
-    }
+        subscribe(receiveQuestionEvent);
+        return () => unsubscribe(receiveQuestionEvent);
+    }, []);
 
     var modal = () => openModal(<CreateQuestion />);
 
     var handleChange = (event) => setSearch(event.currentTarget.value);
 
-    var receiveQuestion = (type, data = {}) => {
-        setQuestions(global.questions);
-        if(type === 'create') jsSearch.addDocument(data);
-        else if(type === 'vote') setupSearch();
+    var receiveQuestionEvent = (data) => {
+        if(data.event === 'deliver') setQuestions([...data.questions]);
     }
 
     var vote = (vote) => {

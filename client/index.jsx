@@ -13,11 +13,7 @@ import Modal from './Modal';
 
 // Globals
 global.exam = {};
-global.questions = [];
-global.messages = [];
-global.animals = {};
 global.animal = '';
-global.unRead = 0;
 
 const rootElement = document.createElement('div');
 rootElement.className = 'root';

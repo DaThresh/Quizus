@@ -1,9 +1,10 @@
 // React
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+import { Link } from 'react-router-dom';
 
 // Socket
-import setupSocket from './socket/api';
+import setupSocket from './services/socket/api';
 
 function Topbar(props){
     const [examName, setExamName] = useState('');
@@ -53,9 +54,11 @@ function Topbar(props){
         <span>
             <nav className="navbar is-light" role="navigation" aria-label="main navigation" id="topbar">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="/">
-                        {Icon()}
-                    </a>
+                    <Link to="/">
+                      <a className="navbar-item">
+                          {Icon()}
+                      </a>
+                    </Link>
                     <a role="button" className="navbar-burger" data-target="mobile-menu" aria-label="menu" aria-expanded="false" onClick={burger}>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 // API
-import { createQuestion } from '../socket/api';
+import { createQuestion } from '../services/socket/api';
 
 // Services
 import { closeModal } from '../services/modal';

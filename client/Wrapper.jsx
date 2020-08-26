@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 // Components
-import Chat from './messages/Messages';
+import Feed from './feed/Feed';
 import Questions from './questions/Questions';
-import Input from './messages/Input';
+import Input from './feed/Input';
 
 // Styles
 import './sass/progress.scss';
@@ -14,17 +14,14 @@ import './sass/progress.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments, faQuestion, faLink } from '@fortawesome/free-solid-svg-icons';
 
-var componentMapper = {
-    'chat': Chat,
-    'questions': Questions
-}
+// Services
+import { subscribe, unsubscribe } from './services/socket/feed';
+
 var timeout = 0;
 
-global.tab = 'chat';
-
 function Wrapper(props){
-    const [tab, setTab] = useState(global.tab);
-    const [unRead, setUnRead] = useState(global.unRead);
+    const [tab, setTab] = useState('chat');
+    const [unRead, setUnRead] = useState(0);
     const [progress, setProgress] = useState(-1);
 
     useEffect(() => {
@@ -32,11 +29,15 @@ function Wrapper(props){
         return () => clearTimeout(timeout);
     }, []);
 
+    useEffect(() => {
+        subscribe(receiveFeedEvent);
+        return () => unsubscribe(receiveFeedEvent);
+    }, []);
+
     var changeTab = (event) => {
         let tabName = event.currentTarget.id;
-        global.tab = tabName;
         setTab(tabName);
-        if(tabName === 'chat'){
+        if(tabName === 'chat' && unRead > 0){
             setUnRead(0);
             document.title = 'Quizus';
         }
@@ -44,6 +45,13 @@ function Wrapper(props){
             node.classList.remove('is-active');
         })
         document.getElementById(tabName).classList.add('is-active');
+    }
+
+    var receiveFeedEvent = (data) => {
+        if(data.event === 'deliver' && tab !== 'chat'){
+            setUnRead(unRead++);
+            document.title = 'Quizus (' + unRead + ')';
+        }
     }
     
     var copyLink = () => navigator.clipboard.writeText(window.location.href);
@@ -57,7 +65,6 @@ function Wrapper(props){
         timeout = updateProgress, time;
     }
 
-    let CurrentTab = componentMapper[tab];
     let progressClass = 'progress is-small has-tooltip';
     if(progress > 66) progressClass += ' is-success';
     else if(progress > 25) progressClass += ' is-warning';
@@ -105,7 +112,7 @@ function Wrapper(props){
                 </div>
             </section>
             <section className="section" id="content-section" style={{paddingTop: 0}}>
-                <CurrentTab />
+                {tab === 'chat' ? <Feed /> : <Questions />}
             </section>
             <Input />
         </div>
