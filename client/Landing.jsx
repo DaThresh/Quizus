@@ -10,6 +10,7 @@ import CreateRoom from './modals/CreateRoom';
 
 // Services
 import { openModal } from './services/modal';
+import { getStats } from './services/http/api';
 
 // Modules
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,12 +20,18 @@ import { CountUp } from 'countup.js';
 function Landing(props){
     useEffect(() => {
         let statElements = document.querySelectorAll('[is-stat]');
-        statElements.forEach(element => {
-            let c = new CountUp(element.id, 100);
-            c.start();
-        });
-        // Get the server stats for countup here
+        getStats()
+        .then(stats => startCounting(statElements, stats))
+        .catch(error => console.error(error));
     }, []);
+
+    var startCounting = (elements, stats) => {
+        let keys = Object.keys(stats);
+        elements.forEach(element => {
+            let name = element.getAttribute('name');
+            if(keys.includes(name)) new CountUp(element.id, stats[name]).start();
+        })
+    }
 
     var modal = () => openModal(<CreateRoom />);
 

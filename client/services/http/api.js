@@ -13,6 +13,18 @@ function createExam(name, duration){
     });
 }
 
+function getStats(){
+    return new Promise((resolve, reject) => {
+        axios.get(hostName + '/stats')
+        .then(response => {
+            if(response.status === 200) resolve(response.data.server);
+            else reject(response);
+        })
+        .catch(error => reject(error));
+    })
+}
+
 export {
     createExam,
+    getStats,
 }
