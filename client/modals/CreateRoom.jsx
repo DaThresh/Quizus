@@ -12,7 +12,7 @@ function CreateRoom(props){
     const [submitting, setSubmitting] = useState(false);
     const [name, setName] = useState('');
     const [duration, setDuration] = useState("1");
-    const history = useHistory();
+    var history = useHistory();
 
     var updateName = (event) => setName(event.currentTarget.value);
     var updateDuration = (event) => setDuration(event.currentTarget.value);
