@@ -13,7 +13,6 @@ import Notifications from './Notifications';
 
 // Router
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link
@@ -32,16 +31,14 @@ function App(props){
 
     return (
         <span id="app">
-            <Router>
-                <Switch>
-                    <Route path="/join/:examName">
-                        {room}
-                    </Route>
-                    <Route path="/">
-                        <Landing />
-                    </Route>
-                </Switch>
-            </Router>
+            <Switch>
+                <Route path="/join/:examName">
+                    {room}
+                </Route>
+                <Route path="/">
+                    <Landing />
+                </Route>
+            </Switch>
         </span>
     )
 }

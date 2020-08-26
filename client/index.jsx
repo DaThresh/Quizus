@@ -2,6 +2,7 @@
 import 'core-js';
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // Styles
 import './sass/imports.sass';
@@ -23,9 +24,9 @@ rootElement.className = 'root';
 document.body.appendChild(rootElement);
 
 render(
-  <span>
+  <Router>
     <App />
     <Modal />
-  </span>,
+  </Router>,
   rootElement
 );

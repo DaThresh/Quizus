@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader/root';
 
 // Services
 import { createExam } from '../services/http/api';
+import { closeModal } from '../services/modal';
 
 // Router
 import { useHistory } from 'react-router-dom';
@@ -12,7 +13,7 @@ function CreateRoom(props){
     const [submitting, setSubmitting] = useState(false);
     const [name, setName] = useState('');
     const [duration, setDuration] = useState("1");
-    var history = useHistory();
+    const history = useHistory();
 
     var updateName = (event) => setName(event.currentTarget.value);
     var updateDuration = (event) => setDuration(event.currentTarget.value);
@@ -24,7 +25,7 @@ function CreateRoom(props){
         createExam(name, duration)
         .then(code => history.push('/join/' + code))
         .catch(error => console.error(error))
-        .finally(setSubmitting(false));
+        .finally(() => closeModal());
     }
 
     return (
