@@ -5,12 +5,10 @@ import { render } from 'react-dom';
 
 // Styles
 import './sass/imports.sass';
-import './sass/App.scss';
 
 // Components
-import Wrapper from './Wrapper';
-import Topbar from './Topbar';
-import Notifications from './Notifications';
+import App from './App';
+import Modal from './Modal';
 
 // Socket
 import setupSocket from './socket/api';
@@ -31,8 +29,8 @@ document.body.appendChild(rootElement);
 
 render(
   <span>
-    <Topbar />
-    <Wrapper />
+    <App />
+    <Modal />
   </span>,
   rootElement
 );

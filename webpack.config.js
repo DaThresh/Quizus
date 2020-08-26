@@ -6,7 +6,7 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
     'react-hot-loader/patch',
-    './client/index.js'
+    './client/index.jsx'
   ],
   mode: 'development',
   module: {

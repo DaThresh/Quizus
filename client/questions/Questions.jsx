@@ -5,15 +5,16 @@ import { hot } from 'react-hot-loader/root';
 // Search
 import { Search } from 'js-search';
 
-// Child import
-import Modal from './Modal';
+// Components
 import Question from './Question';
+import CreateQuestion from '../modals/CreateQuestion';
 
 // Styles
 import '../sass/questions.scss';
 
-// API
+// Services
 import { subscribeQuestions, unsubscribeQuestions, castVote } from '../socket/api';
+import { openModal } from '../services/modal';
 
 // Ads
 import AdSense from 'react-adsense';
@@ -36,7 +37,7 @@ function Questions(props){
         jsSearch.addDocuments(questions);
     }
 
-    var openModal = () => document.querySelector('.modal').classList.add('is-active');
+    var modal = () => openModal(<CreateQuestion />);
 
     var handleChange = (event) => setSearch(event.currentTarget.value);
 
@@ -74,10 +75,10 @@ function Questions(props){
             <div className="column">
                 <div className="columns">
                     <div className="column has-text-left has-text-centered-mobile">
-                        <button className="button is-link is-hidden-mobile" onClick={openModal}>
+                        <button className="button is-link is-hidden-mobile" onClick={modal}>
                             Create Question
                         </button>
-                        <button className="button is-link is-fullwidth is-hidden-tablet" onClick={openModal}>
+                        <button className="button is-link is-fullwidth is-hidden-tablet" onClick={modal}>
                             Create Question
                         </button>
                     </div>
@@ -92,7 +93,6 @@ function Questions(props){
                     </div>
                 </div>
                 {renderQuestions}
-                <Modal />
             </div>
             <div className="column is-1 is-hidden-touch is-hidden-desktop-only">
                 {desktopAdTwo}
