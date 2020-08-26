@@ -1,5 +1,4 @@
 * Combine both READMEs
-* Find Google Ad error origination
 * Fix voting
 * Manually disconnect when linking back to home
 * Unify create Exam/Room language across everything
