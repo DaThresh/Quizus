@@ -54,11 +54,11 @@ function Topbar(props){
         <span>
             <nav className="navbar is-light" role="navigation" aria-label="main navigation" id="topbar">
                 <div className="navbar-brand">
-                    <Link to="/">
-                      <a className="navbar-item">
+                    <a className="navbar-item">
+                      <Link to="/">
                           {Icon()}
-                      </a>
-                    </Link>
+                      </Link>
+                    </a>
                     <a role="button" className="navbar-burger" data-target="mobile-menu" aria-label="menu" aria-expanded="false" onClick={burger}>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>

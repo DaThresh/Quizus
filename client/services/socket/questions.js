@@ -1,5 +1,3 @@
-import { Socket } from "socket.io-client";
-
 var subscriptions = [];
 
 var questions = [];
@@ -14,8 +12,10 @@ function receiveQuestion(question){
     deliver();
 }
 
-function receiveVote(vote){
-
+function receiveVote(votedQuestion){
+    let index = questions.findIndex(question => question._id === votedQuestion._id);
+    questions[index] = votedQuestion;
+    deliver();
 }
 
 function getQuestions(){

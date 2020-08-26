@@ -32,26 +32,24 @@ function Wrapper(props){
     useEffect(() => {
         subscribe(receiveFeedEvent);
         return () => unsubscribe(receiveFeedEvent);
-    }, []);
+    }, [tab, unRead]);
+
+    useEffect(() => {
+        document.title = 'Quizus' + (unRead > 0 ? ' (' + unRead + ')' : '');
+    }, [unRead]);
 
     var changeTab = (event) => {
         let tabName = event.currentTarget.id;
-        setTab(tabName);
-        if(tabName === 'chat' && unRead > 0){
-            setUnRead(0);
-            document.title = 'Quizus';
-        }
+        if(tabName === 'chat' && unRead > 0) setUnRead(0);
         document.getElementById('tab-list').childNodes.forEach(node => {
             node.classList.remove('is-active');
         })
         document.getElementById(tabName).classList.add('is-active');
+        setTab(tabName);
     }
 
     var receiveFeedEvent = (data) => {
-        if(data.event === 'deliver' && tab !== 'chat'){
-            setUnRead(unRead++);
-            document.title = 'Quizus (' + unRead + ')';
-        }
+        if(data.event === 'deliver' && tab !== 'chat') setUnRead(unRead + 1);
     }
     
     var copyLink = () => navigator.clipboard.writeText(window.location.href);
