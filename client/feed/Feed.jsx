@@ -21,7 +21,7 @@ function Feed(props){
     useEffect(() => {
         subscribe(receiveFeedEvent);
         return () => unsubscribe(receiveFeedEvent);
-    }, []);
+    }, [feed]);
 
     var receiveFeedEvent = (data) => {
         if(data.event === 'deliver') setFeed([...data.feed]);

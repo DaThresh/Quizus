@@ -35,6 +35,7 @@ function App(props){
                     <Landing />
                 </Route>
             </Switch>
+            <Notifications />
         </span>
     )
 }

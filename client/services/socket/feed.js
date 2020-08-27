@@ -2,6 +2,10 @@ var subscriptions = [];
 
 var feed = [];
 
+function injectFeed(injectableFeed){
+    feed = injectableFeed;
+}
+
 function receiveMessage(message){
     feed.push(message);
     deliver();
@@ -25,6 +29,7 @@ function unsubscribe(callback){
 }
 
 export {
+    injectFeed,
     receiveMessage,
     receiveJoin,
     getFeed,

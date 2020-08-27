@@ -17,12 +17,19 @@ import { faComments, faQuestion, faLink } from '@fortawesome/free-solid-svg-icon
 // Services
 import { subscribe, unsubscribe } from './services/socket/feed';
 
+// Modules
+import ClipboardJS from 'clipboard';
+
 var timeout = 0;
 
 function Wrapper(props){
     const [tab, setTab] = useState('chat');
     const [unRead, setUnRead] = useState(0);
     const [progress, setProgress] = useState(-1);
+
+    useEffect(() => {
+        new ClipboardJS('.copy-url');
+    }, []);
 
     useEffect(() => {
         timeout = setTimeout(updateProgress, 100);
@@ -51,8 +58,6 @@ function Wrapper(props){
     var receiveFeedEvent = (data) => {
         if(data.event === 'deliver' && tab !== 'chat') setUnRead(unRead + 1);
     }
-    
-    var copyLink = () => navigator.clipboard.writeText(window.location.href);
 
     var updateProgress = () => {
         let time;
@@ -81,6 +86,7 @@ function Wrapper(props){
                                         <FontAwesomeIcon icon={faComments} />
                                     </span>
                                     <span>Chat</span>
+                                    {unRead > 0 ? <span class="tag is-info is-rounded" style={{marginLeft: '5px'}}>{unRead}</span> : null}
                                 </a>
                             </li>
                             <li onClick={changeTab} id="questions">
@@ -100,7 +106,7 @@ function Wrapper(props){
                                         max="100">
                                 </progress>
                                 <span className="tooltip-text">
-                                    <span onClick={copyLink} className="copy-link">Copy the link <FontAwesomeIcon icon={faLink} className="copy-link-icon" /></span>
+                                    <span className="copy-link copy-url" data-clipboard-text={window.location.href}>Copy the link <FontAwesomeIcon icon={faLink} className="copy-link-icon" /></span>
                                     <br />
                                     Invite your peers
                                 </span>

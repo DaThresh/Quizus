@@ -34,10 +34,6 @@ function Topbar(props){
         return Math.round(100 - (timeDiff / global.exam.duration * 100));
     }
 
-    function copy(){
-        navigator.clipboard.writeText(window.location.href);
-    }
-
     const [progress, setProgress] = useState(fetchProgress());
     setTimeout(() => setProgress(fetchProgress()), 1000);
     let progressClass = 'progress';
@@ -54,11 +50,9 @@ function Topbar(props){
         <span>
             <nav className="navbar is-light" role="navigation" aria-label="main navigation" id="topbar">
                 <div className="navbar-brand">
-                    <a className="navbar-item">
-                      <Link to="/">
-                          {Icon()}
-                      </Link>
-                    </a>
+                    <Link className="navbar-item" to="/">
+                        {Icon()}
+                    </Link>
                     <a role="button" className="navbar-burger" data-target="mobile-menu" aria-label="menu" aria-expanded="false" onClick={burger}>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -79,7 +73,7 @@ function Topbar(props){
                 </p>
                 <div className="columns is-mobile">
                     <div className="column is-4">
-                        <button className="button is-link is-light has-text-right" style={{verticalAlign: 'middle', marginRight: '15px'}} onClick={copy}>Copy Link</button>
+                        <button className="button is-link is-light has-text-right copy-url" data-clipboard-text={window.location.href} style={{verticalAlign: 'middle', marginRight: '15px'}}>Copy Link</button>
                     </div>
                     <div className="column is-7">
                         <span className="progress-holder-mobile">

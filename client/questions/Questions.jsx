@@ -31,7 +31,7 @@ function Questions(props){
     useEffect(() => {
         subscribe(receiveQuestionEvent);
         return () => unsubscribe(receiveQuestionEvent);
-    }, []);
+    }, [questions]);
 
     var modal = () => openModal(<CreateQuestion />);
 

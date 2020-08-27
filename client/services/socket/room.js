@@ -1,4 +1,5 @@
 import { injectQuestions } from './questions';
+import { pushNotification } from '../notifications';
 
 var subscriptions = [];
 
@@ -16,6 +17,7 @@ function init(exam, socket){
 }
 
 function receiveDisconnect(reason = ''){
+    pushNotification({header: 'Disconnected', type: 'danger', message: 'You have been disconnected from the server'})
     subscriptions.forEach(callback => callback({
         event: 'disconnect',
         reason

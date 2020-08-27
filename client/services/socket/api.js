@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import { init, receiveDisconnect } from './room';
-import { receiveJoin, receiveMessage } from './feed';
-import { receiveQuestion, receiveVote } from './questions';
+import { receiveJoin, receiveMessage, injectFeed } from './feed';
+import { receiveQuestion, receiveVote, injectQuestions } from './questions';
 
 var socket;
 
@@ -32,9 +32,17 @@ function castVote(vote){
     socket.emit('questions.vote', vote);
 }
 
+function disconnect(){
+    if(socket) socket.disconnect();
+    injectFeed([]);
+    injectQuestions([]);
+
+}
+
 export default setup;
 export {
     createMessage,
     createQuestion,
     castVote,
+    disconnect,
 }

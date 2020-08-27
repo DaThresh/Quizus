@@ -4,7 +4,6 @@ var questions = [];
 
 function injectQuestions(injectableQuestions){
     questions = injectableQuestions;
-    deliver();
 }
 
 function receiveQuestion(question){
@@ -14,7 +13,7 @@ function receiveQuestion(question){
 
 function receiveVote(votedQuestion){
     let index = questions.findIndex(question => question._id === votedQuestion._id);
-    questions[index] = votedQuestion;
+    questions[index]['votes'] = votedQuestion['votes'];
     deliver();
 }
 

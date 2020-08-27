@@ -11,6 +11,7 @@ import CreateRoom from './modals/CreateRoom';
 // Services
 import { openModal } from './services/modal';
 import { getStats } from './services/http/api';
+import { disconnect } from './services/socket/api';
 
 // Modules
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +19,8 @@ import { faPlus, faUsers, faAward } from '@fortawesome/free-solid-svg-icons';
 import { CountUp } from 'countup.js';
 
 function Landing(props){
+    disconnect();
+
     useEffect(() => {
         let statElements = document.querySelectorAll('[is-stat]');
         getStats()

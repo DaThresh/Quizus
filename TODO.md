@@ -1,6 +1,5 @@
-* Fix voting
-* Manually disconnect when linking back to home
 * Unify create Exam/Room language across everything
+* Ensure client timers are working as expected
 
 Later
 * Implement file error logging
