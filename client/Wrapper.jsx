@@ -20,8 +20,6 @@ import { subscribe, unsubscribe } from './services/socket/feed';
 // Modules
 import ClipboardJS from 'clipboard';
 
-var timeout = 0;
-
 function Wrapper(props){
     const [tab, setTab] = useState('chat');
     const [unRead, setUnRead] = useState(0);
@@ -32,9 +30,10 @@ function Wrapper(props){
     }, []);
 
     useEffect(() => {
-        timeout = setTimeout(updateProgress, 100);
+        let time = progress === -1 ? 200 : 30 * 1000;
+        var timeout = setTimeout(() => setProgress(fetchProgress()), time);
         return () => clearTimeout(timeout);
-    }, []);
+    }, [progress]);
 
     useEffect(() => {
         subscribe(receiveFeedEvent);
@@ -57,15 +56,6 @@ function Wrapper(props){
 
     var receiveFeedEvent = (data) => {
         if(data.event === 'deliver' && tab !== 'chat') setUnRead(unRead + 1);
-    }
-
-    var updateProgress = () => {
-        let time;
-        let progress = fetchProgress();
-        setProgress(progress);
-        if(progress !== -1) time = 1000 * 60;
-        else time = 300;
-        timeout = updateProgress, time;
     }
 
     let progressClass = 'progress is-small has-tooltip';
@@ -128,7 +118,7 @@ function fetchProgress(){
     let createdAt = new Date(global.exam.createdAt).getTime();
     let now = new Date().getTime();
     let timeDiff = now - createdAt;
-    return Math.round(100 - (timeDiff / global.exam.duration * 100));
+    return 100 - (timeDiff / global.exam.duration * 100);
 }
 
 export default hot(Wrapper);

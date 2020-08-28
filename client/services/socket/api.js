@@ -33,6 +33,8 @@ function castVote(vote){
 }
 
 function disconnect(){
+    if(global.exam) global.exam = {};
+    global.animal = '';
     if(socket) socket.disconnect();
     injectFeed([]);
     injectQuestions([]);
