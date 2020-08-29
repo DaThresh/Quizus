@@ -32,6 +32,7 @@ if(optKeys.length > 0){
 var Server;
 mongoose.connect(mongoString, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
     .then(() => {
+        Logger.info('Connected to the database');
         const Exam = require(DIR + '/models/exam');
         return Exam.deleteMany({})
     }).then(() => {

@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader/root';
 // Services
 import { createExam } from '../services/http/api';
 import { closeModal } from '../services/modal';
+import { pushNotification } from '../services/notifications';
 
 // Router
 import { useHistory } from 'react-router-dom';
@@ -24,8 +25,13 @@ function CreateRoom(props){
         setSubmitting(true);
         createExam(name, duration)
         .then(code => history.push('/join/' + code))
-        .catch(error => console.error(error))
+        .catch(error => handleError(error))
         .finally(() => closeModal());
+    }
+
+    var handleError = (error) => {
+        pushNotification({type: 'danger', header: 'Error', message: 'An error occured while trying to create the exam room.'});
+        console.error(error);
     }
 
     return (
