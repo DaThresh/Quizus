@@ -28,7 +28,7 @@ function Feed(props){
     }
 
     let renderedFeed = feed.map((feedObj, i) => {
-        let props = {key: i, data: feedObj, last: i === feed.length - 1, getAnimalColor};
+        let props = {key: i, id: i, data: feedObj, last: i === feed.length - 1, getAnimalColor};
         return feedObj.message ? <Message {...props} /> : <Join {...props} />;
     });
 

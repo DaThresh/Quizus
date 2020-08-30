@@ -8,6 +8,7 @@ function Message(props){
     const [elapsedTime, setElapsedTime] = useState(calculateElapsedTime(date, new Date()));
 
     useEffect(() => {
+        if(props.last) document.getElementById(props.id).scrollIntoView();
         let interval = setInterval(intervalLogic, 60000);
         return () => clearInterval(interval);
     }, []);
@@ -17,7 +18,7 @@ function Message(props){
     let color = props.getAnimalColor(data.animal);
 
     return (
-        <div className="box">
+        <div className="box" id={props.id}>
             <article className="media">
                 <div className="media-content">
                     <div className="content">
