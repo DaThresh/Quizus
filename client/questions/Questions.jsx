@@ -76,7 +76,7 @@ function Questions(props){
                             Create Question
                         </button>
                     </div>
-                    <div className="column is-offset-one-third has-text-right has-text-centered-mobile" style={{zIndex: -5}}>
+                    <div className="column is-offset-one-third has-text-right has-text-centered-mobile">
                         <input
                             className="input"
                             type="text"

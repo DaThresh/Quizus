@@ -25,7 +25,7 @@ function receiveDisconnect(reason = ''){
 }
 
 function getAnimals(){
-    return animals;
+    return animals ? animals : [];
 }
 
 function subscribe(callback){

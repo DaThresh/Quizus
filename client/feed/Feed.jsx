@@ -8,12 +8,9 @@ import Join from './Join';
 
 // API
 import { subscribe, unsubscribe, getFeed } from '../services/socket/feed';
-import { getAnimals } from '../services/socket/room';
 
 // Ads
 import AdSense from 'react-adsense';
-
-const animals = getAnimals();
 
 function Feed(props){
     const [feed, setFeed] = useState(getFeed());
@@ -28,8 +25,8 @@ function Feed(props){
     }
 
     let renderedFeed = feed.map((feedObj, i) => {
-        let props = {key: i, id: i, data: feedObj, last: i === feed.length - 1, getAnimalColor};
-        return feedObj.message ? <Message {...props} /> : <Join {...props} />;
+        let passProps = {key: i, id: i, data: feedObj, last: i === feed.length - 1, getAnimalColor: props.getAnimalColor};
+        return feedObj.message ? <Message {...passProps} /> : <Join {...passProps} />;
     });
 
     let mobileAd = <AdSense.Google client='' slot='' />;
@@ -54,11 +51,6 @@ function Feed(props){
             </div>
         </div>
     )
-}
-
-function getAnimalColor(animal){
-    if(animals[animal]) return animals[animal]['color'];
-    return 'black';
 }
 
 export default hot(Feed);

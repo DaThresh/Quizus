@@ -8,11 +8,6 @@
     padding-bottom: 15px;
 }
 
-#wrapper{
-    padding-bottom: 0.5rem;
-    padding-top: 0.5rem;
-}
-
 .vote-icon{
     font-size: 20px;
     -webkit-touch-callout: none;
@@ -91,14 +86,6 @@
     width: 100%;
 }
 
-#wrapper{
-    position: fixed;
-    top: 50px;
-    left: 0;
-    width: 100%;
-    background-color: white;
-}
-
 #content-section{
     margin-top: 130px;
 }
@@ -107,8 +94,4 @@
     position: relative;
     top: 16px;
     left: 2px;
-}
-
-#room-progress-desktop{
-    position: relative;
 }

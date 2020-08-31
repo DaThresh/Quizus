@@ -1,0 +1,29 @@
+#room-animal{
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 200px;
+    max-height: 30px;
+    line-height: 0.5;
+}
+
+@media only screen and (max-width: 768px){
+    #room-animal{
+        display: none;
+    }
+}
+
+#wrapper{
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+#room-progress-desktop{
+    position: relative;
+    margin-bottom: 0;
+}

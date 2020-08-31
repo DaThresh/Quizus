@@ -9,6 +9,7 @@ import Input from './feed/Input';
 
 // Styles
 import './sass/progress.scss';
+import './sass/Wrapper.scss';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,9 +17,12 @@ import { faComments, faQuestion, faLink } from '@fortawesome/free-solid-svg-icon
 
 // Services
 import { subscribe, unsubscribe } from './services/socket/feed';
+import { getAnimals } from './services/socket/room';
 
 // Modules
 import ClipboardJS from 'clipboard';
+
+const animals = getAnimals();
 
 function Wrapper(props){
     const [tab, setTab] = useState('chat');
@@ -70,6 +74,9 @@ function Wrapper(props){
                 <div className="container">
                     <div className="tabs is-centered is-boxed is-medium">
                         <ul id="tab-list" className="is-relative">
+                            <div id="room-animal" style={{color: getAnimalColor(global.animal)}}>
+                                {global.animal}
+                            </div>
                             <li className="is-active" onClick={changeTab} id="chat">
                                 <a>
                                     <span className="icon is-small">
@@ -91,7 +98,6 @@ function Wrapper(props){
                                 <span className="up-right">Time left</span>
                                 <progress id="room-progress-desktop"
                                         className={progressClass}
-                                        style={{marginBottom: '0'}}
                                         value={progress}
                                         max="100">
                                 </progress>
@@ -106,7 +112,7 @@ function Wrapper(props){
                 </div>
             </section>
             <section className="section" id="content-section" style={{paddingTop: 0}}>
-                {tab === 'chat' ? <Feed /> : <Questions />}
+                {tab === 'chat' ? <Feed getAnimalColor={getAnimalColor} /> : <Questions />}
             </section>
             <Input />
         </div>
@@ -119,6 +125,11 @@ function fetchProgress(){
     let now = new Date().getTime();
     let timeDiff = now - createdAt;
     return 100 - (timeDiff / global.exam.duration * 100);
+}
+
+function getAnimalColor(animal){
+    if(animals[animal]) return animals[animal]['color'];
+    return 'black';
 }
 
 export default hot(Wrapper);
