@@ -1,5 +1,5 @@
 // React
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 // Icons
@@ -13,10 +13,7 @@ var input;
 
 function Input(props){
     const [message, setMessage] = useState('');
-
-    useEffect(() => {
-        input = document.getElementById('chat-input');
-    }, []);
+    const inputRef = useRef();
 
     var handleChange = (event) => setMessage(event.currentTarget.value);
 
@@ -26,7 +23,7 @@ function Input(props){
             setMessage('');
         }
         event.preventDefault();
-        if(document.activeElement === input) input.focus();
+        if(document.activeElement === inputRef.current) inputRef.current.focus();
     }
 
     return (
@@ -36,7 +33,7 @@ function Input(props){
                     <div className="field">
                         <p className="control has-icons-right">
                             <input 
-                                id="chat-input"
+                                ref={inputRef}
                                 className="input is-rounded" 
                                 type="text" name="chat" 
                                 placeholder="Enter your message" 
