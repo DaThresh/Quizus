@@ -4,7 +4,7 @@
 
 Follow these steps to get the project up and running on your machine:
 1. `git clone` this Repository
-2. Copy `server/sample.yml` to `server/config.yml`
+2. Run `npm run config` to generate your config file
 3. Update `server/config.yml` to your use case
 4. Run `npm i` inside the project directory to install all dependencies
 5. `npm start` inside the project folder
@@ -21,7 +21,7 @@ The server is set up in such a way to separate the HTTP requests from the Socket
 
 ## Building for QA/Production
 
-Before pushing any client changes, make sure to run `npm build` in order to build the client application for the servers that will run it.
+Before pushing any client changes, make sure to run `npm run build` in order to build the client application for the servers that will run it.
 
 ## Security
 
