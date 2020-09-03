@@ -1,6 +1,5 @@
 // React
 import React, { useState } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // API
 import { createQuestion } from '../services/socket/api';
@@ -8,7 +7,7 @@ import { createQuestion } from '../services/socket/api';
 // Services
 import { closeModal } from '../services/modal';
 
-function CreateQuestion(props){
+function CreateQuestion(){
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
 
@@ -41,4 +40,4 @@ function CreateQuestion(props){
     )
 }
 
-export default hot(CreateQuestion);
+export default CreateQuestion;

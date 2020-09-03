@@ -1,12 +1,11 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { hot } from 'react-hot-loader/root';
 import { Link } from 'react-router-dom';
 
 // Socket
 import setupSocket from './services/socket/api';
 
-function Topbar(props){
+function Topbar(){
     const [examName, setExamName] = useState('');
 
     useEffect(() => {
@@ -153,4 +152,4 @@ function Icon() {
   );
 }
 
-export default hot(Topbar);
+export default Topbar;

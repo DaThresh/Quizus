@@ -1,6 +1,5 @@
 // React
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -87,4 +86,4 @@ function Question(props){
     )
 }
 
-export default hot(Question);
+export default Question;

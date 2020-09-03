@@ -1,6 +1,5 @@
 // React
 import React, { useEffect } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // Styles
 import './sass/Landing.scss';
@@ -18,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faUsers, faAward } from '@fortawesome/free-solid-svg-icons';
 import { CountUp } from 'countup.js';
 
-function Landing(props){
+function Landing(){
     disconnect();
 
     useEffect(() => {
@@ -166,4 +165,4 @@ function Landing(props){
     )
 }
 
-export default hot(Landing);
+export default Landing;

@@ -1,6 +1,5 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 function Message(props){
     const data = props.data;
@@ -43,4 +42,4 @@ function calculateElapsedTime(start, end){
     return Math.floor(timeDiff / 60) + 'h';
 }
 
-export default hot(Message);
+export default Message;

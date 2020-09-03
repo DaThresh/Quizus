@@ -1,6 +1,5 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // Search
 import { Search } from 'js-search';
@@ -20,7 +19,7 @@ import { openModal } from '../services/modal';
 // Ads
 import AdSense from 'react-adsense';
 
-function Questions(props){
+function Questions(){
     const [questions, setQuestions] = useState(getQuestions());
     const [search, setSearch] = useState('');
     var jsSearch = new Search('_id');
@@ -114,4 +113,4 @@ function canVote(vote){
     return [true, sessionValue];
 }
 
-export default hot(Questions);
+export default Questions;

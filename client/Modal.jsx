@@ -1,11 +1,10 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // Services
 import { subscribe, unsubscribe, closeModal } from './services/modal';
 
-function Modal(props){
+function Modal(){
     const [modal, setModal] = useState(null);
 
     useEffect(() => {
@@ -31,4 +30,4 @@ function Modal(props){
     )
 }
 
-export default hot(Modal);
+export default Modal;

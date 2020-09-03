@@ -1,6 +1,5 @@
 // React
 import React, { useState } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // Services
 import { createExam } from '../services/http/api';
@@ -10,7 +9,7 @@ import { pushNotification } from '../services/notifications';
 // Router
 import { useHistory } from 'react-router-dom';
 
-function CreateRoom(props){
+function CreateRoom(){
     const [submitting, setSubmitting] = useState(false);
     const [name, setName] = useState('');
     const [duration, setDuration] = useState("1");
@@ -58,4 +57,4 @@ function CreateRoom(props){
     )
 }
 
-export default hot(CreateRoom);
+export default CreateRoom;

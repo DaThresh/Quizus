@@ -1,6 +1,5 @@
 // React
-import React, { useState, useEffect, useRef } from 'react';
-import { hot } from 'react-hot-loader/root';
+import React, { useState, useRef } from 'react';
 
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,9 +8,7 @@ import { faShare } from '@fortawesome/free-solid-svg-icons';
 // API
 import { createMessage } from '../services/socket/api';
 
-var input;
-
-function Input(props){
+function Input(){
     const [message, setMessage] = useState('');
     const inputRef = useRef();
 
@@ -50,4 +47,4 @@ function Input(props){
     )
 }
 
-export default hot(Input);
+export default Input;

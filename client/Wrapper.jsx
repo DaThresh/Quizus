@@ -1,6 +1,5 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // Components
 import Feed from './feed/Feed';
@@ -24,7 +23,7 @@ import ClipboardJS from 'clipboard';
 
 const animals = getAnimals();
 
-function Wrapper(props){
+function Wrapper(){
     const [tab, setTab] = useState('chat');
     const [unRead, setUnRead] = useState(0);
     const [progress, setProgress] = useState(-1);
@@ -132,4 +131,4 @@ function getAnimalColor(animal){
     return 'black';
 }
 
-export default hot(Wrapper);
+export default Wrapper;

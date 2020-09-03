@@ -1,6 +1,5 @@
 // React
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
 
 function Join(props){
     const data = props.data;
@@ -26,4 +25,4 @@ function Join(props){
     )
 }
 
-export default hot(Join);
+export default Join;

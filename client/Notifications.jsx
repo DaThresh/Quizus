@@ -1,6 +1,5 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // Styles
 import './sass/Notifications.scss';
@@ -8,7 +7,7 @@ import './sass/Notifications.scss';
 // Services
 import { subscribe, unsubscribe } from './services/notifications';
 
-function Notifications(props){
+function Notifications(){
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
@@ -66,4 +65,4 @@ function Message(props){
     )
 }
 
-export default hot(Notifications);
+export default Notifications;

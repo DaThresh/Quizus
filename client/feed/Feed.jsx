@@ -1,6 +1,5 @@
 // React
 import React, { useState, useEffect } from 'react';
-import { hot } from 'react-hot-loader/root';
 
 // Components
 import Message from './Message';
@@ -53,4 +52,4 @@ function Feed(props){
     )
 }
 
-export default hot(Feed);
+export default Feed;
