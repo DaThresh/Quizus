@@ -11,7 +11,11 @@ module.exports = merge(common, {
         './client/index.jsx'
     ],
     devtool: 'eval-source-map',
-    plugins: [new webpack.HotModuleReplacementPlugin()],
+    plugins: [new webpack.HotModuleReplacementPlugin(),
+              new webpack.DefinePlugin({
+                'ENVIRONMENT': JSON.stringify('development'),
+              }),
+    ],
     resolve: {
       alias: {
         'react-dom': '@hot-loader/react-dom'
