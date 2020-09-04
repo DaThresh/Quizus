@@ -1,9 +1,13 @@
 // React
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 // Socket
 import setupSocket from './services/socket/api';
+
+// Utilities
+import { isLive } from './utilities/environment';
 
 function Topbar(props){
     const [examName, setExamName] = useState('');
@@ -13,6 +17,11 @@ function Topbar(props){
     useEffect(() => {
       setupSocket();
     }, []);
+
+    useEffect(() => {
+      if(!isLive()) return;
+      ReactGA.pageview('/join');
+    })
 
     useEffect(() => {
       let time = progress === -1 ? 200 : 30 * 1000;
