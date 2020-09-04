@@ -44,7 +44,7 @@ function Landing(){
         })
     }
 
-    var modal = () => openModal(<CreateRoom />);
+    var modal = () => openModal(<CreateRoom />, 'Create Room');
 
     return (
         <span id="landing">

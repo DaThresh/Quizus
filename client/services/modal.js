@@ -1,12 +1,20 @@
+// Analytics
+import ReactGA from 'react-ga';
+
+// Utilities
+import { isLive } from '../utilities/environment';
+
 const openEventName = 'open';
 const closeEventName = 'close';
 
 var subscriptions = [];
 var modal = null;
 
-function openModal(component){
+function openModal(component, label){
     notify(openEventName, {component});
     getModal().classList.add('is-active');
+    if(!isLive()) return;
+    ReactGA.event({ category: 'Modal', action: 'Open', label: label });
 }
 
 function closeModal(){

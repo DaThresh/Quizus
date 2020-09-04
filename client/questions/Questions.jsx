@@ -32,7 +32,7 @@ function Questions(){
         return () => unsubscribe(receiveQuestionEvent);
     }, [questions]);
 
-    var modal = () => openModal(<CreateQuestion />);
+    var modal = () => openModal(<CreateQuestion />, 'Create Question');
 
     var handleChange = (event) => setSearch(event.currentTarget.value);
 

@@ -1,10 +1,8 @@
 // React
 import React, { useState } from 'react';
 
-// API
-import { createQuestion } from '../services/socket/api';
-
 // Services
+import { createQuestion } from '../services/socket/api';
 import { closeModal } from '../services/modal';
 
 function CreateQuestion(){
