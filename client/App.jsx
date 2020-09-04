@@ -1,5 +1,5 @@
 // React
-import React, { useState } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader/root';
 
 // Styles
@@ -16,13 +16,10 @@ import Modal from './Modal';
 import { Switch, Route } from 'react-router-dom';
 
 function App(){
-    // Create room service where you fetch to see if you are in the room
-    const [inRoom, setInRoom] = useState(false);
-
     const room = (
         <span id="room">
-            <Topbar />
-            <Wrapper />
+            <Topbar fetchProgress={fetchProgress} />
+            <Wrapper fetchProgress={fetchProgress} />
         </span>
     )
 
@@ -40,6 +37,14 @@ function App(){
             <Modal />
         </span>
     )
+}
+
+function fetchProgress(){
+    if(!global.exam.createdAt) return -1;
+    let createdAt = new Date(global.exam.createdAt).getTime();
+    let now = new Date().getTime();
+    let timeDiff = now - createdAt;
+    return 100 - (timeDiff / global.exam.duration * 100);
 }
 
 export default hot(App);

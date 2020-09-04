@@ -1,58 +1,52 @@
 // React
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 // Socket
 import setupSocket from './services/socket/api';
 
-function Topbar(){
+function Topbar(props){
     const [examName, setExamName] = useState('');
+    const [progress, setProgress] = useState(-1);
+    const menu = useRef();
 
     useEffect(() => {
       setupSocket();
     }, []);
 
-    var nameInterval = setInterval(() => {
+    useEffect(() => {
+      let time = progress === -1 ? 200 : 30 * 1000;
+      let timeout = setTimeout(() => setProgress(props.fetchProgress()), time);
+      return () => clearTimeout(timeout);
+    }, [progress]);
+
+    useEffect(() => {
+      let interval = setInterval(() => {
         let name = global.exam.name;
         if(name !== ''){
-            clearInterval(nameInterval);
-            setExamName(name);
+          clearInterval(interval);
+          setExamName(name);
         }
-    }, 100);
+      });
+      return () => clearInterval(interval);
+    }, []);
 
-    function burger(event){
-        let menu = document.querySelector('#' + event.currentTarget.dataset.target);
-        menu.classList.toggle('is-active');
-    }
+    var  burger = () => menu.current.classList.toggle('is-active');
 
-    function fetchProgress(){
-        if(!global.exam.createdAt) return -1;
-        let createdAt = new Date(global.exam.createdAt).getTime();
-        let now = new Date().getTime();
-        let timeDiff = now - createdAt;
-        return Math.round(100 - (timeDiff / global.exam.duration * 100));
-    }
-
-    const [progress, setProgress] = useState(fetchProgress());
-    setTimeout(() => setProgress(fetchProgress()), 1000);
     let progressClass = 'progress';
     if(progress > 66) progressClass += ' is-success';
     else if(progress > 25) progressClass += ' is-warning';
     else progressClass += ' is-danger';
     if(progress < 10) progressClass += ' blink-me';
 
-    setInterval(() => {
-        setProgress(fetchProgress());
-    }, 60000);
-
     return (
         <span>
             <nav className="navbar is-light" role="navigation" aria-label="main navigation" id="topbar">
                 <div className="navbar-brand">
                     <Link className="navbar-item" to="/">
-                        {Icon()}
+                        {<Icon />}
                     </Link>
-                    <a role="button" className="navbar-burger" data-target="mobile-menu" aria-label="menu" aria-expanded="false" onClick={burger}>
+                    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={burger}>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -66,7 +60,7 @@ function Topbar(){
                     </div>
                 </div>
             </nav>
-            <div id="mobile-menu" className="has-background-white-bis">
+            <div id="mobile-menu" ref={menu} className="has-background-white-bis">
                 <p className="title" style={{marginBottom: '5px'}}>
                     { examName }
                 </p>

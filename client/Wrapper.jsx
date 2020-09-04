@@ -23,7 +23,7 @@ import ClipboardJS from 'clipboard';
 
 const animals = getAnimals();
 
-function Wrapper(){
+function Wrapper(props){
     const [tab, setTab] = useState('chat');
     const [unRead, setUnRead] = useState(0);
     const [progress, setProgress] = useState(-1);
@@ -34,7 +34,7 @@ function Wrapper(){
 
     useEffect(() => {
         let time = progress === -1 ? 200 : 30 * 1000;
-        var timeout = setTimeout(() => setProgress(fetchProgress()), time);
+        let timeout = setTimeout(() => setProgress(props.fetchProgress()), time);
         return () => clearTimeout(timeout);
     }, [progress]);
 
@@ -116,14 +116,6 @@ function Wrapper(){
             <Input />
         </div>
     )
-}
-
-function fetchProgress(){
-    if(!global.exam.createdAt) return -1;
-    let createdAt = new Date(global.exam.createdAt).getTime();
-    let now = new Date().getTime();
-    let timeDiff = now - createdAt;
-    return 100 - (timeDiff / global.exam.duration * 100);
 }
 
 function getAnimalColor(animal){

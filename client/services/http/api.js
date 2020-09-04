@@ -1,4 +1,6 @@
 import axios from 'axios';
+import ReactGA from 'react-ga';
+import { isLive } from '../../utilities/environment';
 
 const hostName = window.location.origin;
 
@@ -10,6 +12,11 @@ function createExam(name, duration){
             else reject(response);
         })
         .catch(error => reject(error));
+        if(isLive()) ReactGA.event({
+            category: 'Room',
+            action: 'Create',
+            value: parseInt(duration),
+        });
     });
 }
 
