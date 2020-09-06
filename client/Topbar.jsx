@@ -66,7 +66,13 @@ function Topbar(props){
                 </p>
                 <div className="columns is-mobile">
                     <div className="column is-4">
-                        <button className="button is-link is-light has-text-right copy-url" data-clipboard-text={window.location.href} style={{verticalAlign: 'middle', marginRight: '15px'}}>Copy Link</button>
+                        <button
+                          onClick={props.notifyCopy}
+                          className="button is-link is-light has-text-right copy-url"
+                          data-clipboard-text={window.location.href}
+                          style={{verticalAlign: 'middle', marginRight: '15px'}}>
+                            Copy Link
+                        </button>
                     </div>
                     <div className="column is-7">
                         <span className="progress-holder-mobile">

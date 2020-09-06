@@ -101,7 +101,12 @@ function Wrapper(props){
                                         max="100">
                                 </progress>
                                 <span className="tooltip-text">
-                                    <span className="copy-link copy-url" data-clipboard-text={window.location.href}>Copy the link <FontAwesomeIcon icon={faLink} className="copy-link-icon" /></span>
+                                    <span 
+                                        className="copy-link copy-url"
+                                        data-clipboard-text={window.location.href}
+                                        onClick={props.notifyCopy}>
+                                            Copy the link <FontAwesomeIcon icon={faLink} className="copy-link-icon" />
+                                    </span>
                                     <br />
                                     Invite your peers
                                 </span>

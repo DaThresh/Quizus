@@ -12,14 +12,17 @@ import Wrapper from './Wrapper';
 import Notifications from './Notifications';
 import Modal from './Modal';
 
+// Services
+import { pushNotification } from './services/notifications';
+
 // Router
 import { Switch, Route } from 'react-router-dom';
 
 function App(){
     const room = (
         <span id="room">
-            <Topbar fetchProgress={fetchProgress} />
-            <Wrapper fetchProgress={fetchProgress} />
+            <Topbar fetchProgress={fetchProgress} notifyCopy={notifyCopy} />
+            <Wrapper fetchProgress={fetchProgress} notifyCopy={notifyCopy} />
         </span>
     )
 
@@ -45,6 +48,10 @@ function fetchProgress(){
     let now = new Date().getTime();
     let timeDiff = now - createdAt;
     return 100 - (timeDiff / global.exam.duration * 100);
+}
+
+function notifyCopy(){
+    pushNotification({header: 'Copied', message: 'Link copied to clipboard', type: 'info'});
 }
 
 export default hot(App);
