@@ -1,5 +1,6 @@
 // React
 import React, { useEffect } from 'react';
+import ReactGA from 'react-ga';
 
 // Styles
 import './sass/Landing.scss';
@@ -11,6 +12,9 @@ import CreateRoom from './modals/CreateRoom';
 import { openModal } from './services/modal';
 import { getStats } from './services/http/api';
 import { disconnect } from './services/socket/api';
+
+// Utilities
+import { isLive } from './utilities/environment';
 
 // Modules
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,6 +31,11 @@ function Landing(){
         .catch(error => console.error(error));
     }, []);
 
+    useEffect(() => {
+        if(!isLive()) return;
+        ReactGA.pageview(window.location.pathname);
+    }, []);
+
     var startCounting = (elements, stats) => {
         let keys = Object.keys(stats);
         elements.forEach(element => {
@@ -35,7 +44,7 @@ function Landing(){
         })
     }
 
-    var modal = () => openModal(<CreateRoom />);
+    var modal = () => openModal(<CreateRoom />, 'Create Room');
 
     return (
         <span id="landing">
