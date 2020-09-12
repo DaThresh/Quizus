@@ -35,24 +35,41 @@ function CreateRoom(){
 
     return (
         <form autoComplete="off" onSubmit={submit}>
-            <div className="field">
-                <label className="label">Exam name</label>
-                <div className="control">
-                    <input className="input" name="name" id="name" value={name} onChange={updateName} />
+            <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                    <label class="label">Exam</label>
                 </div>
-            </div>
-            <div className="field">
-                <div className="control">
-                    <div className="select is-medium">
-                        <select name="duration" value={duration} onChange={updateDuration}>
-                            <option value="1">1 Hour</option>
-                            <option value="2">2 Hours</option>
-                            <option value="3">3 Hours</option>
-                        </select>
+                <div className="field-body">
+                    <div className="field">
+                        <div className="control">
+                            <input className="input" name="name" id="name" value={name} onChange={updateName} placeholder="Mr Smith's Exam" />
+                        </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" className="button is-primary">Start!</button>
+            <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                    <label class="label">Length</label>
+                </div>
+                <div className="field-body">
+                    <div className="field">
+                        <div className="control">
+                            <div className="select is-fullwidth">
+                                <select name="duration" value={duration} onChange={updateDuration}>
+                                    <option value="1">1 Hour</option>
+                                    <option value="2">2 Hours</option>
+                                    <option value="3">3 Hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="field is-grouped is-grouped-centered">
+                <div className="control">
+                    <button type="submit" className="button is-primary">Start!</button>
+                </div>
+            </div>
         </form>
     )
 }
