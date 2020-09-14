@@ -37,7 +37,7 @@ function CreateRoom(){
         <form autoComplete="off" onSubmit={submit}>
             <div className="field is-horizontal">
                 <div className="field-label is-normal">
-                    <label class="label">Exam</label>
+                    <label className="label">Exam</label>
                 </div>
                 <div className="field-body">
                     <div className="field">
@@ -49,7 +49,7 @@ function CreateRoom(){
             </div>
             <div className="field is-horizontal">
                 <div className="field-label is-normal">
-                    <label class="label">Length</label>
+                    <label className="label">Length</label>
                 </div>
                 <div className="field-body">
                     <div className="field">

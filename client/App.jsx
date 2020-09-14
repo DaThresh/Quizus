@@ -42,8 +42,8 @@ function App(){
     )
 }
 
-function fetchProgress(){
-    if(!global.exam.createdAt) return -1;
+function fetchProgress(current){
+    if(!global.exam.createdAt) return current - 1;
     let createdAt = new Date(global.exam.createdAt).getTime();
     let now = new Date().getTime();
     let timeDiff = now - createdAt;

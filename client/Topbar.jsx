@@ -24,8 +24,8 @@ function Topbar(props){
     })
 
     useEffect(() => {
-      let time = progress === -1 ? 200 : 30 * 1000;
-      let timeout = setTimeout(() => setProgress(props.fetchProgress()), time);
+      let time = (progress < 0 && Math.floor(progress) == progress) ? 200 : 30 * 1000;
+      let timeout = setTimeout(() => setProgress(props.fetchProgress(progress)), time);
       return () => clearTimeout(timeout);
     }, [progress]);
 
@@ -94,6 +94,11 @@ function Topbar(props){
                             </progress>
                         </span>
                     </div>
+                </div>
+                <div className="columns">
+                  <div className="column has-text-centered">
+                    {global.animal}
+                  </div>
                 </div>
             </div>
         </span>
