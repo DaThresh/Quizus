@@ -7,6 +7,8 @@ import './sass/Notifications.scss';
 // Services
 import { subscribe, unsubscribe } from './services/notifications';
 
+const size = window.innerWidth > 1024 ? 'normal' : 'small';
+
 function Notifications(){
     const [notifications, setNotifications] = useState([]);
 
@@ -41,7 +43,7 @@ function Notifications(){
     }
 
     return (
-        <div id="notifications" className="is-hidden-mobile">
+        <div id="notifications">
             {notifications.map(notification => <Message key={notification.id - 1} notification={notification} destructNotification={destructNotification} />)}
         </div>
     )
@@ -53,7 +55,7 @@ function Message(props){
     var destroy = () => props.destructNotification(notification.id);
 
     return (
-        <div className={'message is-' + notification.type}>
+        <div className={'message is-' + size + ' is-' + notification.type}>
             <div className="message-header">
                 <p>{notification.header}</p>
                 <button className="delete" aira-label="delete" onClick={destroy}></button>
